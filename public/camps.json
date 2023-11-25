@@ -1,0 +1,109 @@
+[
+    {
+      "CampName": "Heart Health Awareness Camp",
+      "Image": "heart_health_image.jpg",
+      "CampFees": "$20",
+      "DateAndTime": "2023-12-15T09:00:00",
+      "Location": "City Hospital, 123 Main St, Anytown",
+      "ServicesProvided": [
+        "Cardiac screenings",
+        "Nutritional counseling",
+        "Exercise demonstrations"
+      ],
+      "HealthcareProfessionals": [
+        "Cardiologists",
+        "Nutritionists",
+        "Fitness instructors"
+      ],
+      "TargetAudience": "Adults aged 30 and above"
+    },
+    {
+      "CampName": "Pediatric Vaccination Camp",
+      "Image": "pediatric_vaccination_image.jpg",
+      "CampFees": "Free",
+      "DateAndTime": "2023-11-30T10:30:00",
+      "Location": "Community Center, 456 Oak St, Suburbia",
+      "ServicesProvided": [
+        "Childhood vaccinations",
+        "Health check-ups"
+      ],
+      "HealthcareProfessionals": [
+        "Pediatricians",
+        "Nurses"
+      ],
+      "TargetAudience": "Children under 12 years old"
+    },
+    {
+      "CampName": "Diabetes Management Workshop",
+      "Image": "diabetes_management_image.jpg",
+      "CampFees": "$15",
+      "DateAndTime": "2024-01-10T14:00:00",
+      "Location": "Wellness Center, 789 Elm St, Downtown",
+      "ServicesProvided": [
+        "Blood sugar screenings",
+        "Educational sessions",
+        "Dietary planning"
+      ],
+      "HealthcareProfessionals": [
+        "Endocrinologists",
+        "Dietitians",
+        "Diabetes educators"
+      ],
+      "TargetAudience": "Individuals with diabetes and their families"
+    },
+    {
+      "CampName": "Women's Health Check-up Camp",
+      "Image": "womens_health_image.jpg",
+      "CampFees": "$25",
+      "DateAndTime": "2023-12-05T11:00:00",
+      "Location": "Women's Clinic, 101 Pine St, Metropolis",
+      "ServicesProvided": [
+        "Breast exams",
+        "Gynecological screenings",
+        "Reproductive health counseling"
+      ],
+      "HealthcareProfessionals": [
+        "Gynecologists",
+        "Mammographers",
+        "Women's health nurses"
+      ],
+      "TargetAudience": "Women of all ages"
+    },
+    {
+      "CampName": "Senior Health and Wellness Expo",
+      "Image": "senior_wellness_image.jpg",
+      "CampFees": "Free",
+      "DateAndTime": "2024-02-20T09:30:00",
+      "Location": "Senior Center, 222 Maple Ave, Riverside",
+      "ServicesProvided": [
+        "Geriatric health screenings",
+        "Fall risk assessments",
+        "Community resource information"
+      ],
+      "HealthcareProfessionals": [
+        "Geriatricians",
+        "Physical therapists",
+        "Social workers"
+      ],
+      "TargetAudience": "Seniors aged 65+"
+    },
+    {
+      "CampName": "Mental Health Awareness Seminar",
+      "Image": "mental_health_seminar_image.jpg",
+      "CampFees": "Free",
+      "DateAndTime": "2023-11-28T15:00:00",
+      "Location": "Community Hall, 333 Oakwood Ln, Suburbia",
+      "ServicesProvided": [
+        "Counseling sessions",
+        "Stress management workshops",
+        "Mental health screenings"
+      ],
+      "HealthcareProfessionals": [
+        "Psychiatrists",
+        "Psychologists",
+        "Licensed counselors"
+      ],
+      "TargetAudience": "Community members interested in mental health"
+    }
+  ]
+  
