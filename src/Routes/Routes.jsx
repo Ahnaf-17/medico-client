@@ -7,6 +7,7 @@ import ErrorPage from "../Pages/ErrorPage/ErrorPage";
 import Register from "../Pages/Register/Register";
 import Login from "../Pages/Login/Login";
 import AvailableCamps from "../Pages/AvailableCamps/AvailableCamps";
+import ContactUs from "../Pages/ContactUs/ContactUs";
 
 export const router = createBrowserRouter([
     {
@@ -29,6 +30,10 @@ export const router = createBrowserRouter([
         {
           path:'/availableCamps',
           element:<AvailableCamps></AvailableCamps>
+        },
+        {
+          path:'/contact',
+          element:<ContactUs></ContactUs>
         }
       ]
     },
