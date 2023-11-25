@@ -1,6 +1,19 @@
+import { useContext } from "react";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../Provider/AuthProvider";
 
 const Navbar = () => {
+
+    const { user, logOut } = useContext(AuthContext)
+    const handleLogOut = () => {
+        logOut()
+            .then()
+            .catch(error => {
+                console.log(error)
+            })
+    }
+
+
     const navLinks = <>
         <li><Link to="/">Home</Link></li>
         <li><Link to="/camps">Available Camps</Link></li>
@@ -51,7 +64,50 @@ const Navbar = () => {
                 </ul>
             </div>
             <div className="navbar-end">
-                <a className="btn">Get started</a>
+            <div className="dropdown dropdown-end">
+                    {
+                        user ?
+                            <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
+                                {
+                                    user.photoURL ?
+                                        <div className="w-10 rounded-full">
+                                            <img src={user.photoURL} alt="https://i.ibb.co/fqgXySz/avater.png" />
+                                        </div>
+                                        :
+                                        <div className="w-10 rounded-full">
+                                            <img src='https://i.ibb.co/fqgXySz/avater.png' alt="" />
+                                        </div>
+                                }
+                            </label>
+                            :
+                            <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
+                                <div className="w-10 rounded-full">
+                                    <img src="https://i.ibb.co/ZBXgGBM/user.png" />
+                                </div>
+                            </label>
+                    }
+
+                    <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-cyan-800 rounded-box w-52">
+                        <li>
+                            {
+                                user ?
+                                    <div className="flex flex-col  text-white items-start justify-start text-left">
+                                        <p>Welcome,{user.displayName}</p>
+                                        <button onClick={handleLogOut} className="btn">Log out</button>
+                                    </div>
+                                    :
+                                    <div>
+                                        <Link to='/login'>
+                                            <button className="btn bg-stone-400 font-bold text-black">Login</button>
+                                        </Link>
+                                        <Link to='/register'>
+                                            <button className="btn bg-stone-400 font-bold text-black">Register</button>
+                                        </Link>
+                                    </div>
+                            }
+                        </li>
+                    </ul>
+                </div>
             </div>
         </div>
     </>
