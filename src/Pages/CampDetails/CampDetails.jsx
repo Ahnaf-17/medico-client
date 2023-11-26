@@ -11,15 +11,16 @@ const CampDetails = () => {
     useEffect(()=>{
         const findCamp = camp?.find(selectCamp=> selectCamp._id == _id);
         setSelectCamp(findCamp)
-    },[])
-
+    },[_id, camp])
+    if(loading){
+        <span className="loading loading-dots loading-lg ite"></span>
+    }
+    
     return (
         <div>
-            {
-                loading?<span className="loading loading-dots loading-lg ite"></span>
-                :
+            
                 <CampDetailsPage selectCamp={selectCamp}></CampDetailsPage>
-            }
+            
         </div>
     );
 };
