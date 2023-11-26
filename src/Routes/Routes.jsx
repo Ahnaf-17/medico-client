@@ -10,6 +10,7 @@ import AvailableCamps from "../Pages/AvailableCamps/AvailableCamps";
 import ContactUs from "../Pages/ContactUs/ContactUs";
 import PrivateRoute from "./PrivateRoute";
 import Dashboard from "../Layout/Dashboard";
+import CampDetails from "../Pages/CampDetails/CampDetails";
 
 export const router = createBrowserRouter([
     {
@@ -36,6 +37,10 @@ export const router = createBrowserRouter([
         {
           path:'/contact',
           element:<ContactUs></ContactUs>
+        },
+        {
+          path:'/camp-details/:_id',
+          element:<PrivateRoute><CampDetails></CampDetails></PrivateRoute>
         }
       ]
     },

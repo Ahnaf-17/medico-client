@@ -1,8 +1,10 @@
 /* eslint-disable react/prop-types */
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 const CampCard = ({camp}) => {
-    const {campName,image,campFees,dateAndTime,location} = camp;
+    const state = useLocation()
+    const joinButton = state.pathname.includes('availableCamps')
+    const {_id,campName,image,campFees,dateAndTime,location} = camp;
     return (
         <div className="card bg-base-100 shadow-xl  lg:flex">
             <div>
@@ -17,9 +19,12 @@ const CampCard = ({camp}) => {
                 <p>Location :{location}</p>
                 {/* <p className="font-semibold">{category}</p> */}
                 <div className="card-actions justify-end">
-                    <Link to={`/details/`}>
+                    <Link to={`/camp-details/${_id}`}>
                         <button className="badge badge-outline">View details</button>
                     </Link>
+                    {
+                        joinButton && <button className="badge badge-outline">Join now</button>
+                    }
                 </div>
             </div>
         </div>
