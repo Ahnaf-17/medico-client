@@ -8,6 +8,8 @@ import Register from "../Pages/Register/Register";
 import Login from "../Pages/Login/Login";
 import AvailableCamps from "../Pages/AvailableCamps/AvailableCamps";
 import ContactUs from "../Pages/ContactUs/ContactUs";
+import PrivateRoute from "./PrivateRoute";
+import Dashboard from "../Layout/Dashboard";
 
 export const router = createBrowserRouter([
     {
@@ -37,4 +39,11 @@ export const router = createBrowserRouter([
         }
       ]
     },
+    {
+      path:'dashboard',
+      element:<PrivateRoute><Dashboard></Dashboard></PrivateRoute>,
+      children:[
+        
+      ]
+    }
   ]);

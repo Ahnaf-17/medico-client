@@ -6,15 +6,15 @@ const PopularCamp = () => {
     const [camp,loading] = useCamp();
 
 
-
     return (
         <div>
             <SectionHeading
             heading="Popular Camps"></SectionHeading>
             <div className="grid md:grid-cols-2 grid-cols-1 gap-6">
             {
-                loading? <p>Loading...</p> : 
-                camp.slice(-6).map(item=> <CampCard key={item.id}
+                loading? <span className="loading loading-dots loading-lg ite"></span>
+                : 
+                camp.slice(-6).map(item=> <CampCard key={item._id}
                     camp={item}
                     >
                     </CampCard>)
