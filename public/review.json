@@ -1,0 +1,32 @@
+[
+    {
+        "campName": "Health and Wellness Expo",
+        "date": "2023-12-20",
+        "feedback": "The expo was incredibly informative. I learned a lot about maintaining a healthier lifestyle and got my health screening done. Great initiative!",
+        "rating": 4.5
+    },
+    {
+        "campName": "Mental Health Awareness Seminar",
+        "date": "2023-11-10",
+        "feedback": "The seminar shed light on various aspects of mental health. It was enlightening to understand ways to manage stress and anxiety.",
+        "rating": 4.8
+    },
+    {
+        "campName": "Dental Care Camp",
+        "date": "2024-01-15",
+        "feedback": "The camp provided free dental check-ups for kids. My children had a great experience and learned about oral hygiene.",
+        "rating": 4.2
+    },
+    {
+        "campName": "Women's Health Conference",
+        "date": "2024-02-28",
+        "feedback": "The conference had insightful talks about women's health issues. I found it beneficial and empowering.",
+        "rating": 4.7
+    },
+    {
+        "campName": "Senior Health Check-up",
+        "date": "2023-10-05",
+        "feedback": "The health check-up for seniors was well-organized. It covered comprehensive assessments and provided useful information.",
+        "rating": 4.0
+    }
+]
