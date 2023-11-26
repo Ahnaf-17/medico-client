@@ -31,7 +31,7 @@ export const router = createBrowserRouter([
         },
         {
           path:'/availableCamps',
-          element:<AvailableCamps></AvailableCamps>
+          element:<PrivateRoute><AvailableCamps></AvailableCamps></PrivateRoute>
         },
         {
           path:'/contact',
@@ -43,7 +43,7 @@ export const router = createBrowserRouter([
       path:'dashboard',
       element:<PrivateRoute><Dashboard></Dashboard></PrivateRoute>,
       children:[
-        
+
       ]
     }
   ]);
