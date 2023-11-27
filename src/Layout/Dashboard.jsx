@@ -2,8 +2,10 @@ import { AiOutlineMenuUnfold } from "react-icons/ai";
 import { NavLink, Outlet } from "react-router-dom";
 import { FaHome, FaListAlt, FaMobileAlt, FaRegEdit, FaUser } from "react-icons/fa";
 import { FaCalendarPlus, FaCashRegister } from "react-icons/fa6";
+import useOrganizer from "../Hooks/useOrganizer";
 
 const Dashboard = () => {
+    const [isOrganizer] = useOrganizer()
     return (
         <div className="flex">
             <div className="drawer lg:drawer-open">
@@ -18,7 +20,11 @@ const Dashboard = () => {
                     <ul className="menu p-4 w-80 min-h-full bg-cyan-800  text-white">
 
                         {/* role based (organizer) */}
-                        <li>
+
+                        {
+                            isOrganizer ? 
+                            <>
+                            <li>
                             <NavLink to='/dashboard/organizer-profile'><FaUser></FaUser> Profile</NavLink>
                         </li>
                         <li>
@@ -30,6 +36,23 @@ const Dashboard = () => {
                         <li>
                             <NavLink to='/dashboard/manage-registered-camps'><FaCashRegister></FaCashRegister> Registered camp</NavLink>
                         </li>
+                            </> 
+                            :
+                            <>
+                            <li>
+                            <NavLink to='/dashboard/participant-profile'><FaUser></FaUser> participant Profile</NavLink>
+                        </li>
+                        <li>
+                            <NavLink to='/dashboard/add-a-camp'><FaCalendarPlus></FaCalendarPlus>destroy a camp</NavLink>
+                        </li>
+                        <li>
+                            <NavLink to='/dashboard/manage-camps'><FaRegEdit></FaRegEdit>Manage camp</NavLink>
+                        </li>
+                        <li>
+                            <NavLink to='/dashboard/manage-registered-camps'><FaCashRegister></FaCashRegister> Registered camp</NavLink>
+                        </li>
+                            </>
+                        }
 
 
                         {/* common */}

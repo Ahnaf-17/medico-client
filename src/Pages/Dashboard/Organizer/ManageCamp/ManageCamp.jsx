@@ -10,7 +10,11 @@ const ManageCamp = () => {
     const {data: camps = [],refetch} = useQuery({
         queryKey: ['camps'],
         queryFn: async()=>{
-            const res = await axiosPrivate.get('/camps');
+            const res = await axiosPrivate.get('/camps',{
+                headers:{
+                    authorization: `Bearer ${localStorage.getItem('access-token')}`
+                }
+            });
             return res.data;
         }
     })
@@ -42,7 +46,7 @@ const ManageCamp = () => {
         });
     }
 
-    const handleUpdateCamp = camp =>{
+    const handleUpdateCamp = () =>{
 
     }
 
@@ -73,7 +77,7 @@ const ManageCamp = () => {
             <td>{camp.dateAndTime}</td>
             <td>{camp.location}</td>
             <td>
-                <button onClick={()=>handleUpdateCamp(camp)}
+                <button onClick={()=>handleUpdateCamp()}
                 className='btn btn-ghost text-xl text-cyan-800'>
                     <FaEdit></FaEdit>
                 </button>
