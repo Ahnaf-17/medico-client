@@ -7,9 +7,10 @@ import { useContext, useState } from "react";
 import Swal from "sweetalert2";
 import { updateProfile } from "firebase/auth";
 import { useForm } from "react-hook-form";
+import useAxiosPublic from "../../Hooks/useAxiosPublic";
 
 const Register = () => {
-    // const axiosPublic = useAxiosPublic();
+    const axiosPublic = useAxiosPublic();
     const { register, handleSubmit, reset, formState: { errors } } = useForm();
     const { createUser, updateUserProfile } = useContext(AuthContext);
     const navigate = useNavigate();
@@ -23,45 +24,46 @@ const Register = () => {
                 updateUserProfile(data.name, data.photoURL)
                     .then(() => {
                         // create user entry in the database
-                        // const userInfo = {
-                        //     name: data.name,
-                        //     email: data.email
-                        // }
-                        // axiosPublic.post('/users', userInfo)
-                        //     .then(res => {
-                        //         if (res.data.insertedId) {
-                        //             console.log('user added to the database')
-                        //             reset();
-                        //             Swal.fire({
-                        //                 position: 'top-end',
-                        //                 icon: 'success',
-                        //                 title: 'User created successfully.',
-                        //                 showConfirmButton: false,
-                        //                 timer: 1500
-                        //             });
-                        //             navigate('/');
-                        //         }
-                        //     })
+                        const userInfo = {
+                            name: data.name,
+                            email: data.email,
+                            role: data.role
+                        }
+                        axiosPublic.post('/users', userInfo)
+                            .then(res => {
+                                if (res.data.insertedId) {
+                                    console.log('user added to the database')
+                                    reset();
+                                    Swal.fire({
+                                        position: 'top-end',
+                                        icon: 'success',
+                                        title: 'User created successfully.',
+                                        showConfirmButton: false,
+                                        timer: 1500
+                                    });
+                                    navigate('/');
+                                }
+                            })
 
-                        console.log(result.user)
-                        Swal.fire(
-                            'Good job!',
-                            'You clicked the button!',
-                            'success'
-                          )
+                        // console.log(result.user)
+                        // Swal.fire(
+                        //     'Good job!',
+                        //     'You clicked the button!',
+                        //     'success'
+                        //   )
             
 
                     })
-                    // .catch(error => console.log(error))
-                    .catch(error =>{
-                        console.error(error);
-                        Swal.fire({
-                            icon: 'error',
-                            title: 'Oops...',
-                            text: 'incorrect password or email',
-                            footer: '<a href="">Why do I have this issue?</a>'
-                          })
-                    })
+                    .catch(error => console.log(error))
+                    // .catch(error =>{
+                    //     console.error(error);
+                    //     Swal.fire({
+                    //         icon: 'error',
+                    //         title: 'Oops...',
+                    //         text: 'incorrect password or email',
+                    //         footer: '<a href="">Why do I have this issue?</a>'
+                    //       })
+                    // })
             })
     };
 
@@ -107,6 +109,18 @@ const Register = () => {
                                 {errors.password?.type === 'maxLength' && <p className="text-red-600">Password must be less than 20 characters</p>}
                                 {errors.password?.type === 'pattern' && <p className="text-red-600">Password must have one Uppercase one lower case, one number and one special character.</p>}
                             </div>
+                            <div className="form-control">
+                        <label className="label">
+                            <span className="label-text text-white">Role</span>
+                        </label>
+                        <select {...register("role", { required: true })} className="select select-bordered">
+                            <option value="">Select Role</option>
+                            <option value="participant">Participant</option>
+                            <option value="organizer">Organizer</option>
+                            <option value="professional">Professional</option>
+                        </select>
+                        {errors.role && <span className="text-red-600">Role is required</span>}
+                    </div>
                             <div className="form-control mt-6">
                                 <input className="btn btn-primary" type="submit" value="Sign Up" />
                             </div>

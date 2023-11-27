@@ -11,6 +11,11 @@ import ContactUs from "../Pages/ContactUs/ContactUs";
 import PrivateRoute from "./PrivateRoute";
 import Dashboard from "../Layout/Dashboard";
 import CampDetails from "../Pages/CampDetails/CampDetails";
+import ParticipantProfile from "../Pages/Dashboard/Participant/Profile/ParticipantProfile";
+import OrganizerProfile from "../Pages/Dashboard/Organizer/Profile/OrganizerProfile";
+import AddCamp from "../Pages/Dashboard/Organizer/AddCamp/AddCamp";
+import ManageCamp from "../Pages/Dashboard/Organizer/ManageCamp/ManageCamp";
+import ManageRegCamp from "../Pages/Dashboard/Organizer/ManageRegCamp/ManageRegCamp";
 
 export const router = createBrowserRouter([
     {
@@ -48,7 +53,30 @@ export const router = createBrowserRouter([
       path:'dashboard',
       element:<PrivateRoute><Dashboard></Dashboard></PrivateRoute>,
       children:[
+        // participant 
+        {
+          path: 'participant-profile',
+          element: <ParticipantProfile></ParticipantProfile>
+        },
 
+
+        // organizer 
+        {
+          path:'organizer-profile',
+          element:<OrganizerProfile></OrganizerProfile>
+        },
+        {
+          path:'add-a-camp',
+          element:<AddCamp></AddCamp>
+        },
+        {
+          path:'manage-camps',
+          element:<ManageCamp></ManageCamp>
+        },
+        {
+          path:'manage-registered-camps',
+          element:<ManageRegCamp></ManageRegCamp>
+        }
       ]
     }
   ]);
