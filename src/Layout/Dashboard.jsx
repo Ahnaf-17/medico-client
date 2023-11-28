@@ -17,11 +17,11 @@ const Dashboard = () => {
                 <div className="drawer-content flex flex-col items-start justify-start">
                     {/* Page content here */}
                     <label htmlFor="my-drawer-2" className="btn  drawer-button text-2xl lg:hidden mt-2"><AiOutlineMenuUnfold /></label>
-                    <div className="ml-4 mt-4 w-full"><Outlet></Outlet></div>
+                    <div className="mx-2 md:pr-0 pr-2 w-full"><Outlet></Outlet></div>
                 </div>
                 <div className="drawer-side">
                     <label htmlFor="my-drawer-2" aria-label="close sidebar" className="drawer-overlay"></label>
-                    <ul className="menu p-4 w-80 min-h-full bg-cyan-800  text-white">
+                    <ul className="menu p-4 w-80 min-h-screen bg-cyan-800  text-white">
 
                         {/* role based (organizer) */}
 
