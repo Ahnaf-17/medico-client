@@ -249,7 +249,6 @@ const ManageCamp = () => {
                     </div>
 
                     <button className="btn bg-cyan-800 text-white mt-2">Update</button>
-                    {/* <input type="submit" /> */}
                 </form>
                 
                 
