@@ -1,10 +1,16 @@
 import { useContext } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../Provider/AuthProvider";
+import useOrganizer from "../../Hooks/useOrganizer";
+import useParticipant from "../../Hooks/useParticipant";
+import useProfessional from "../../Hooks/useProfessional";
 
 const Navbar = () => {
 
     const { user, logOut } = useContext(AuthContext)
+    const [isOrganizer] = useOrganizer()
+    const [isParticipant] = useParticipant()
+    const [isProfessional] = useProfessional()
     const handleLogOut = () => {
         logOut()
             .then()
@@ -17,7 +23,15 @@ const Navbar = () => {
     const navLinks = <>
         <li><Link to="/">Home</Link></li>
         <li><Link to="/availableCamps">Available Camps</Link></li>
-        <li><Link to="/dashboard">Dashboard</Link></li>
+        {
+            user && isOrganizer && <li><Link to="/dashboard/organizer-profile">Dashboard</Link></li>
+        }
+        {
+            user && isParticipant && <li><Link to="/dashboard/participant-profile">Dashboard</Link></li>
+        }
+        {
+            user && isProfessional && <li><Link to="/dashboard/professional-profile">Dashboard</Link></li>
+        }
         <li><Link to="/contact">Contact Us</Link></li>
 
         {/* {

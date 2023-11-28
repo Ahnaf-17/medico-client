@@ -3,12 +3,14 @@ import SectionHeading from "../../../../components/SectionHeading/SectionHeading
 import useAxiosPublic from "../../../../Hooks/useAxiosPublic";
 import useAxiosPrivate from "../../../../Hooks/useAxiosPrivate";
 import Swal from "sweetalert2";
+import useAuth from "../../../../Hooks/useAuth";
 const image_hosting_key = import.meta.env.VITE_image_key;
 const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_key}`
 const AddCamp = () => {
     const axiosPublic = useAxiosPublic()
     const axiosPrivate = useAxiosPrivate()
     const { register, handleSubmit,reset } = useForm()
+    const {user} = useAuth()
     // const onSubmit = (data) => {
     //     console.log("chap porse");
     //     console.log(data)
@@ -33,7 +35,9 @@ const AddCamp = () => {
                 longDescription: data.longDescription,
                 dateAndTime: data.dateAndTime,
                 campFees: parseFloat(data.campFees),
-                image: res.data.data.display_url
+                image: res.data.data.display_url,
+                userEmail: user.email
+
             }
             // 
             const campRes = await axiosPrivate.post('/camps', campItem);

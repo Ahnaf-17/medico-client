@@ -3,8 +3,10 @@ import useAxiosPrivate from "../../../../Hooks/useAxiosPrivate";
 import { FaEdit } from "react-icons/fa";
 import { FaDeleteLeft } from "react-icons/fa6";
 import Swal from "sweetalert2";
+import useAuth from "../../../../Hooks/useAuth";
 
 const ManageCamp = () => {
+    const {user} = useAuth()
     const axiosPrivate = useAxiosPrivate();
 
     const {data: camps = [],refetch} = useQuery({
@@ -15,7 +17,8 @@ const ManageCamp = () => {
                     authorization: `Bearer ${localStorage.getItem('access-token')}`
                 }
             });
-            return res.data;
+            return res.data.filter(camp=>camp.userEmail === user.email);
+            // return res.data;
         }
     })
 
