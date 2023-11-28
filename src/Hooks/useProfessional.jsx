@@ -2,18 +2,18 @@ import { useQuery } from "@tanstack/react-query";
 import useAuth from "./useAuth";
 import useAxiosPrivate from "./useAxiosPrivate";
 
-const useOrganizer = () => {
+const useProfessional = () => {
     const {user} = useAuth();
     const axiosPrivate = useAxiosPrivate()
-    const {data : isOrganizer, isPending:isOrganizerLoading} = useQuery({
-        queryKey: [user?.email, 'isOrganizer'],
+    const {data : isProfessional, isPending:isProfessionalLoading} = useQuery({
+        queryKey: [user?.email, 'isProfessional'],
         queryFn: async()=>{
             const res = await axiosPrivate.get(`/users/${user.email}`)
             console.log(res.data);
-            return res.data?.organizer
+            return res.data?.professional
         }
     })
-    return [isOrganizer,isOrganizerLoading]
+    return [isProfessional,isProfessionalLoading]
 };
 
-export default useOrganizer;
+export default useProfessional;

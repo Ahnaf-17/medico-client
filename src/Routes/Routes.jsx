@@ -17,6 +17,12 @@ import AddCamp from "../Pages/Dashboard/Organizer/AddCamp/AddCamp";
 import ManageCamp from "../Pages/Dashboard/Organizer/ManageCamp/ManageCamp";
 import ManageRegCamp from "../Pages/Dashboard/Organizer/ManageRegCamp/ManageRegCamp";
 import OrganizerRoute from "./OrganizerRoute";
+import ParticipantRoute from "./ParticipantRoute";
+import RegCamps from "../Pages/Dashboard/Participant/RegCamps/RegCamps";
+import PaymentHistory from "../Pages/Dashboard/Participant/PaymentHistory/PaymentHistory";
+import Feedback from "../Pages/Dashboard/Participant/Feedback/Feedback";
+import ProfessionalRoute from "./ProfessionalRoute";
+import ProfessionalsProfile from "../Pages/Dashboard/Professionals/Profile/ProfessionalsProfile";
 
 export const router = createBrowserRouter([
     {
@@ -57,7 +63,19 @@ export const router = createBrowserRouter([
         // participant 
         {
           path: 'participant-profile',
-          element: <ParticipantProfile></ParticipantProfile>
+          element: <ParticipantRoute><ParticipantProfile></ParticipantProfile></ParticipantRoute>
+        },
+        {
+          path:'registered-camps',
+          element: <ParticipantRoute><RegCamps></RegCamps></ParticipantRoute>
+        },
+        {
+          path:'payment-history',
+          element:<ParticipantRoute><PaymentHistory></PaymentHistory></ParticipantRoute>
+        },
+        {
+          path:'feedback-and-ratings',
+          element:<ParticipantRoute><Feedback></Feedback></ParticipantRoute>
         },
 
 
@@ -77,6 +95,12 @@ export const router = createBrowserRouter([
         {
           path:'manage-registered-camps',
           element:<OrganizerRoute><ManageRegCamp></ManageRegCamp></OrganizerRoute>
+        },
+
+        // professional 
+        {
+          path: 'professional-profile',
+          element:<ProfessionalRoute><ProfessionalsProfile></ProfessionalsProfile></ProfessionalRoute>
         }
       ]
     }

@@ -1,20 +1,20 @@
 /* eslint-disable react/prop-types */
 import { Navigate, useLocation } from "react-router-dom";
 import useAuth from "../Hooks/useAuth";
-import useParticipant from "../Hooks/useParticipant";
+import useProfessional from "../Hooks/useProfessional";
 
-const ParticipantRoute = ({children}) => {
+const ProfessionalRoute = ({children}) => {
     const {user,loading} = useAuth() 
-    const [isParticipant,isParticipantLoading] = useParticipant()
+    const [isProfessional,isProfessionalLoading] = useProfessional()
     const location = useLocation();
 
-    if(loading || isParticipantLoading){
+    if(loading || isProfessionalLoading){
         return <progress className="progress w-56"></progress>
     }
-    if(user && isParticipant){
+    if(user && isProfessional){
         return children;
     }
     return <Navigate to="/login" state={{from: location}} replace></Navigate>
 };
 
-export default ParticipantRoute;
+export default ProfessionalRoute;
