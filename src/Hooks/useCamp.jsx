@@ -3,16 +3,6 @@ import { useQuery } from "@tanstack/react-query";
 
 const useCamp = () => {
 
-    // const [camp,setCamp] = useState([]);
-    // const [loading,setLoading] = useState(true)
-    // useEffect(()=>{
-    //     fetch('http://localhost:5000/camps')
-    //     .then(res=> res.json())
-    //     .then(data=>{
-    //         setCamp(data)
-    //         setLoading(false)
-    //     })
-    // },[])
 
     const axiosPublic = useAxiosPublic();
 

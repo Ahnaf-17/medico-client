@@ -11,10 +11,7 @@ const AddCamp = () => {
     const axiosPrivate = useAxiosPrivate()
     const { register, handleSubmit,reset } = useForm()
     const {user} = useAuth()
-    // const onSubmit = (data) => {
-    //     console.log("chap porse");
-    //     console.log(data)
-    // }
+
     const onSubmit = async (data) => {
         console.log(data)
         // image upload to imgbb and then get an url
