@@ -9,6 +9,9 @@ const AvailableCamps = () => {
     const [camp, loading] = useCamp()
     const [finalCamp, setFinalCamp] = useState([])
     const [searchTerm, setSearchTerm] = useState("");
+    const [sortType, setSortType] = useState("");
+
+
     useEffect(() => {
         let filteredCamps = [...camp];
         if (searchTerm) {
@@ -16,11 +19,25 @@ const AvailableCamps = () => {
                 item.campName.toLowerCase().includes(searchTerm.toLowerCase())
             );
         }
+        if (sortType) {
+            filteredCamps = filteredCamps.filter((item) => {
+                switch (sortType) {
+                    case "participant1-4":
+                        return item.participantCount >= 1 && item.participantCount <= 4;
+                    case "participant5-9":
+                        return item.participantCount >= 5 && item.participantCount <= 9;
+                    case "participant10-14":
+                        return item.participantCount >= 10 && item.participantCount <= 14;
+                    default:
+                        return true;
+                }
+            });
+        }
 
         setFinalCamp(filteredCamps);
-    }, [camp, searchTerm]);
-    const handleFilter = () => {
-
+    }, [camp, searchTerm,sortType]);
+    const handleSort = (e) => {
+        setSortType(e.target.value);
     }
     const handleSearch = (e) => {
         setSearchTerm(e.target.value);
@@ -34,10 +51,15 @@ const AvailableCamps = () => {
                 <div className="lg:flex lg:flex-row md:flex-row flex-col-reverse  items-center  lg:justify-around">
                     <div className="flex items-center justify-center mb-3 md:mb-0">
                         <label className="pr-2 font-semibold">Filter by Participants:</label>
-                        <select className="select select-bordered w-full max-w-xs">
-                            <option disabled selected>participant 1-4</option>
-                            <option>Participant 5-9</option>
-                            <option>10-14</option>
+                        <select
+                            className="select select-bordered w-full max-w-xs"
+                            onChange={handleSort}
+                            value={sortType}
+                        >
+                            <option value="">None</option>
+                            <option value="participant1-4">Participant 1-4</option>
+                            <option value="participant5-9">Participant 5-9</option>
+                            <option value="participant10-14">Participant 10-14</option>
                         </select>
                     </div>
                     <div className="flex items-center justify-center">

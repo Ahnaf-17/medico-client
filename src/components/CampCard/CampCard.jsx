@@ -31,7 +31,7 @@ const CampCard = ({ camp }) => {
             return res.data
         }
     })
-    console.log(campfee,'from camp card line 33');
+    // console.log(campfee,'from camp card line 33');
     useEffect(() => {
         // Update campfee when the camp prop changes
         setCampFee(camp.campFees);
@@ -51,6 +51,7 @@ const CampCard = ({ camp }) => {
             regUser: user.email
         }
 
+        // console.log("all data",regisgterCamp);
         
         // console.log("current id",data.campId);
         // 
