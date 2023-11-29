@@ -54,6 +54,7 @@ export const router = createBrowserRouter([
           path:'/camp-details/:_id',
           element:<PrivateRoute><CampDetails></CampDetails></PrivateRoute>
         }
+       
       ]
     },
     {
@@ -77,6 +78,11 @@ export const router = createBrowserRouter([
           path:'feedback-and-ratings',
           element:<ParticipantRoute><Feedback></Feedback></ParticipantRoute>
         },
+        // {
+        //   path:'/reg-camps/:_id',
+        //   element:<ParticipantRoute><JoinNow></JoinNow></ParticipantRoute>,
+          
+        // },
 
 
         // organizer 

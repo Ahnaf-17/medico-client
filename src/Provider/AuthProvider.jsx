@@ -40,8 +40,10 @@ const AuthProvider = ({children}) => {
         const unSubscribe = onAuthStateChanged(auth, currentUser=>{
             console.log("user in auth", currentUser);
             setUser(currentUser)
+
             if(currentUser){
                 // get token 
+
                 const userInfo = {email:currentUser.email};
                 axiosPublic.post('/jwt',userInfo)
                 .then(res=>{
@@ -50,6 +52,14 @@ const AuthProvider = ({children}) => {
                         setLoading(false)
                     }
                 })
+                // .then(
+                //     axiosPublic.get(`/getUsers/${currentUser.email}`)
+                //     .then(res=>{
+                //         setUser(res.data)
+                //     })
+                //     // .then()
+                // )
+                
             }
             else{
                 // do 
