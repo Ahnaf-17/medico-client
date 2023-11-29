@@ -14,6 +14,7 @@ const AvailableCamps = () => {
     const handleSearch = () =>{
 
     }
+    console.log(camp,"from available camp");
     return (
         <div >
             <Cover></Cover>
