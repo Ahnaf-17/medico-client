@@ -8,14 +8,14 @@ import Swal from "sweetalert2";
 import useAuth from "../../Hooks/useAuth";
 import { useQuery } from "@tanstack/react-query";
 import useAxiosPublic from "../../Hooks/useAxiosPublic";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const CampCard = ({ camp }) => {
     const state = useLocation()
     const joinButton = state.pathname.includes('availableCamps')
     const { _id, campName, image, campFees, dateAndTime, location } = camp;
     const { user } = useAuth()
-    const [campfee,setCampFee] = useState(campFees)
+    const [campfee,setCampFee] = useState(camp.campFees)
 
 
     const { register, handleSubmit, reset } = useForm()
@@ -27,17 +27,20 @@ const CampCard = ({ camp }) => {
         queryKey: ['regCamp'],
         queryFn: async () => {
             const res = await axiosPublic.get('/reg-camps')
-            console.log('inside qf', res.data);
+            // console.log('inside qf', res.data);
             return res.data
         }
     })
     console.log(campfee,'from camp card line 33');
-
+    useEffect(() => {
+        // Update campfee when the camp prop changes
+        setCampFee(camp.campFees);
+    }, [camp.campFees]);
     const onSubmit = async (data) => {
-        console.log('tuttut', data)
+        // console.log('tuttut', data)
         const campIdInput = document.getElementById('campId').value;
         // console.log(campIdInput,'line 34');
-        console.log('camp from line39',campfee);
+        // console.log('camp from line39',campfee);
         const regisgterCamp = {
             name: data.name,
             address: data.address,
@@ -48,6 +51,7 @@ const CampCard = ({ camp }) => {
             regUser: user.email
         }
 
+        
         // console.log("current id",data.campId);
         // 
         const campRes = await axiosPrivate.post('/reg-camps', regisgterCamp);
@@ -66,23 +70,19 @@ const CampCard = ({ camp }) => {
     };
 
 
-    // const openModal = (campId) => {
-    //     const modal = document.getElementById('my_modal_1');
-    //     if (modal) {
-    //       modal.showModal();
-    //       document.getElementById('campId').value = campId; // Set the campId in the hidden input field
-    //     }
-    //   };
+
     const openModal = (campId) => {
         console.log('Camp ID in modal:', campId);
         const modal = document.getElementById('my_modal_1');
+        setCampFee(camp.campFees);
         if (modal) {
             modal.showModal();
             const campIdInput = document.getElementById('campId');
             if (campIdInput) {
-                campIdInput.value = campId; // Set the campId in the hidden input field
+                campIdInput.value = campId; 
             }
         }
+        
     };
 
     const participantCount = regCamp.filter(reg => reg.regCampId === camp._id).length;
@@ -111,7 +111,6 @@ const CampCard = ({ camp }) => {
 
                             {/* <button className="badge badge-outline" onClick={() => openModal(_id)}>Join Now</button> */}
                             <button className="badge badge-outline" onClick={() => openModal(_id)}>Join Now</button>
-                            {/* <button className="badge badge-outline" onClick={() => console.log(_id)}>Join Now</button> */}
 
 
 
@@ -163,22 +162,13 @@ const CampCard = ({ camp }) => {
                                                     <span className="label-text"></span>
                                                 </div>
                                                 <input
-                                                {...register('campId')} // Register the campId field
-                                                type="text" // Hide this field in the form
-                                                id="campId" // Set camp ID as its value
+                                                {...register('campId')} 
+                                                type="text" 
+                                                id="campId" 
                                                 // value={regCamp.regCampId}
                                                 // defaultValue={regCamp.campId}
                                             />
                                             </div>
-
-
-
-                                            
-                                            {/* <input
-  {...register('campId', { value: camp._id })} // Register the campId field and set its value to the current camp ID
-  type="hidden" // Hide this field in the form
-  id="campId" // Set camp ID as its value
-/> */}
 
                                             <button className="btn bg-cyan-800 text-white mt-2">Update</button>
 
