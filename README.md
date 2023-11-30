@@ -7,7 +7,7 @@ managing medical camps. This comprehensive system is tailored to meet the divers
 needs of three pivotal user roles: Organizers, Healthcare Professionals, 
 and Participants, ensuring seamless coordination and optimal functionality
 
-# Live Link:
+# Live Link: https://medico-76bc1.web.app/
 
 # Feature
 - role based user (organizer,participant,professionals)
