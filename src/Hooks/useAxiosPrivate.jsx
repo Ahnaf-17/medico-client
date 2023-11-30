@@ -3,9 +3,9 @@ import useAuth from "./useAuth";
 import { useNavigate } from "react-router-dom";
 
 const axiosPrivate = axios.create({
-    baseURL: 'http://localhost:5000'
+    baseURL: 'https://medico-server-chi.vercel.app'
 }) 
-// http://localhost:5000
+// https://medico-server-chi.vercel.app
 // https://medico-server-chi.vercel.app
 const useAxiosPrivate = () => {
     const {logOut} = useAuth()
