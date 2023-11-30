@@ -25,6 +25,7 @@ import ProfessionalRoute from "./ProfessionalRoute";
 import ProfessionalsProfile from "../Pages/Dashboard/Professionals/Profile/ProfessionalsProfile";
 import Payment from "../Pages/Payment/Payment";
 import AddUpcomingCamp from "../Pages/Dashboard/Organizer/AddUpcomingCamp/AddUpcomingCamp";
+import UpcomingCampDetails from "../Pages/UpcomingCampDetails/UpcomingCampDetails";
 
 export const router = createBrowserRouter([
     {
@@ -55,6 +56,10 @@ export const router = createBrowserRouter([
         {
           path:'/camp-details/:_id',
           element:<PrivateRoute><CampDetails></CampDetails></PrivateRoute>
+        },
+        {
+          path:'/upcoming-camp-details/:_id',
+          element:<PrivateRoute><UpcomingCampDetails></UpcomingCampDetails></PrivateRoute>
         }
        
       ]
