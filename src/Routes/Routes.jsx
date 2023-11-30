@@ -23,6 +23,7 @@ import PaymentHistory from "../Pages/Dashboard/Participant/PaymentHistory/Paymen
 import Feedback from "../Pages/Dashboard/Participant/Feedback/Feedback";
 import ProfessionalRoute from "./ProfessionalRoute";
 import ProfessionalsProfile from "../Pages/Dashboard/Professionals/Profile/ProfessionalsProfile";
+import Payment from "../Pages/Payment/Payment";
 
 export const router = createBrowserRouter([
     {
@@ -77,6 +78,10 @@ export const router = createBrowserRouter([
         {
           path:'feedback-and-ratings',
           element:<ParticipantRoute><Feedback></Feedback></ParticipantRoute>
+        },
+        {
+          path: 'payment/:_id',
+          element:<ParticipantRoute><Payment></Payment></ParticipantRoute>
         },
         // {
         //   path:'/reg-camps/:_id',

@@ -1,21 +1,23 @@
 import { useQuery } from "@tanstack/react-query";
 import useAxiosPrivate from "../../../../Hooks/useAxiosPrivate";
 import useAuth from "../../../../Hooks/useAuth";
-import DataTable from "react-data-table-component";
+// import DataTable from "react-data-table-component";
 import useCamp from "../../../../Hooks/useCamp";
+import SectionHeading from "../../../../components/SectionHeading/SectionHeading";
+import { Link } from "react-router-dom";
 const RegCamps = () => {
     const axiosPrivate = useAxiosPrivate();
     const [camp] = useCamp()
-    const {user} = useAuth()
-    const {data: registeredCamps=[]} = useQuery({
-        queryKey:['registeredCamps'],
-        queryFn: async()=>{
-            const res = await axiosPrivate.get('/reg-camps',{
-                headers:{
+    const { user } = useAuth()
+    const { data: registeredCamps = [] } = useQuery({
+        queryKey: ['registeredCamps'],
+        queryFn: async () => {
+            const res = await axiosPrivate.get('/reg-camps', {
+                headers: {
                     authorization: `Bearer ${localStorage.getItem('access-token')}`
                 }
             });
-            return res.data.filter(camp=>camp.regUser == user.email);
+            return res.data.filter(camp => camp.regUser == user.email);
         }
     })
     // const matchedCamps = registeredCamps.filter(registeredCamp =>
@@ -28,74 +30,90 @@ const RegCamps = () => {
 
     console.log("matched", matchedCamps);
 
-    const columns = [
-        {
-          name: 'Camp Title',
-          selector: row => row.campName,
-        //   sortable: true,
-        },
-        {
-          name: 'Date&Time',
-          selector: row=> row.dateAndTime,
-        //   sortable: true,
-        },
-        {
-          name: 'Location',
-          selector: row=> row.location,
-        //   sortable: true,
-        },
-        {
-          name: 'Have to Pay',
-          selector: row=> row.campFees,
-        //   sortable: true,
-        },
-        {
-          name: 'Payment Status',
-        //   selector: row=> row.campFees,
-        //   sortable: true,
-        },
-        {
-          name: 'Status',
-        //   selector: row=> row.campFees,
-        //   sortable: true,
-        },
+    // const columns = [
+    //     {
+    //       name: 'Camp Title',
+    //       selector: row => row.campName,
+    //     //   sortable: true,
+    //     },
+    //     {
+    //       name: 'Date&Time',
+    //       selector: row=> row.dateAndTime,
+    //     },
+    //     {
+    //       name: 'Location',
+    //       selector: row=> row.location,
+    //     },
+    //     {
+    //       name: 'Have to Pay',
+    //       selector: row=> row.campFees,
+    //     },
+    //     {
+    //       name: 'Payment Status',
+    //     //   selector: row=> row.campFees,
+    //     cell: (row)=>{
+    //         <div>
+    //             <button className="btn" onClick={() => handlePayment(row)}>Pay Now</button>
+    //         </div>
+    //     },
+    //     ignoreRowClick: true,
+    //         allowOverflow: true,
+    //         button: true,
 
-      ];
+    //     },
+    //     {
+    //       name: 'Status',
+    //     //   selector: row=> row.campFees,
+    //     //   sortable: true,
+    //     },
+
+    //   ];
+
 
 
     return (
         <div>
-            {/* <h2 className=" text-2xl">Total camps{matchedCamps.length}</h2> */}
-
-            {/* <div className="overflow-x-auto">
+            <SectionHeading heading='camp info'></SectionHeading>
+            <div className="overflow-x-auto">
   <table className="table table-zebra">
     <thead>
       <tr>
-        <th></th>
-        <th>Name</th>
-        <th>Job</th>
-        <th>Favorite Color</th>
+        <th>#</th>
+        <th>Camp Name</th>
+        <th>Date&Time</th>
+        <th>Location</th>
+        <th>Fees</th>
+        <th>Status</th>
+        
       </tr>
     </thead>
     <tbody>
-      {matchedCamps.map(camp=> <tr key={camp._id}>
-        <th>1</th>
+      {matchedCamps.map((camp,i)=> <tr key={camp._id}>
+        <th>{i+1}</th>
         <td>{camp.campName}</td>
-        <td>Quality Control Specialist</td>
-        <td>Blue</td>
+        <td>{camp.dateAndTime}</td>
+        <td>{camp.location}</td>
+        <td>{camp.campFees}</td>
+        <td>pending</td>
+        <td>
+            <Link to={`/dashboard/payment/${camp._id}`}>
+            <button className="btn btn-md bg-cyan-800 text-white">Pay</button>
+            </Link>
+        </td>
       </tr> )}
       
 
     </tbody>
   </table>
-</div> */}
+</div>
 
-
-<DataTable
+{/* 
+            <DataTable
                 columns={columns}
                 data={matchedCamps}
                 pagination
-            />
+            /> */}
+
 
         </div>
     );
