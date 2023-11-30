@@ -9,13 +9,15 @@ import useAuth from "../../Hooks/useAuth";
 import { useQuery } from "@tanstack/react-query";
 import useAxiosPublic from "../../Hooks/useAxiosPublic";
 import { useEffect, useState } from "react";
+import useParticipant from "../../Hooks/useParticipant";
 
 const CampCard = ({ camp }) => {
     const state = useLocation()
     const joinButton = state.pathname.includes('availableCamps')
     const { _id, campName, image, campFees, dateAndTime, location } = camp;
     const { user } = useAuth()
-    const [campfee,setCampFee] = useState(camp.campFees)
+    const [campfee, setCampFee] = useState(camp.campFees)
+    const [isParticipant] = useParticipant()
 
 
     const { register, handleSubmit, reset } = useForm()
@@ -26,11 +28,11 @@ const CampCard = ({ camp }) => {
     const { data: regCamp = [], refetch } = useQuery({
         queryKey: ['regCamp'],
         queryFn: async () => {
-            const res = await axiosPublic.get('/reg-camps')
+            const res = await axiosPrivate.get('/reg-camps')
             // console.log('inside qf', res.data);
             return res.data
         }
-    })
+    })    
     // console.log(campfee,'from camp card line 33');
     useEffect(() => {
         // Update campfee when the camp prop changes
@@ -52,7 +54,7 @@ const CampCard = ({ camp }) => {
         }
 
         // console.log("all data",regisgterCamp);
-        
+
         // console.log("current id",data.campId);
         // 
         const campRes = await axiosPrivate.post('/reg-camps', regisgterCamp);
@@ -80,10 +82,10 @@ const CampCard = ({ camp }) => {
             modal.showModal();
             const campIdInput = document.getElementById('campId');
             if (campIdInput) {
-                campIdInput.value = campId; 
+                campIdInput.value = campId;
             }
         }
-        
+
     };
 
     const participantCount = regCamp.filter(reg => reg.regCampId === camp._id).length;
@@ -108,6 +110,9 @@ const CampCard = ({ camp }) => {
                         <button className="badge badge-outline">View details</button>
                     </Link>
                     {
+                        isParticipant&&
+                        <>
+                        {
                         joinButton && <>
 
                             {/* <button className="badge badge-outline" onClick={() => openModal(_id)}>Join Now</button> */}
@@ -163,15 +168,15 @@ const CampCard = ({ camp }) => {
                                                     <span className="label-text"></span>
                                                 </div>
                                                 <input
-                                                {...register('campId')} 
-                                                type="text" 
-                                                id="campId" 
+                                                    {...register('campId')}
+                                                    type="text"
+                                                    id="campId"
                                                 // value={regCamp.regCampId}
                                                 // defaultValue={regCamp.campId}
-                                            />
+                                                />
                                             </div>
 
-                                            <button className="btn bg-cyan-800 text-white mt-2">Update</button>
+                                            <button className="btn bg-cyan-800 text-white mt-2">Join</button>
 
                                         </form>
                                     </div>
@@ -184,6 +189,8 @@ const CampCard = ({ camp }) => {
 
                         </>
 
+                    }
+                        </>
                     }
                 </div>
             </div>

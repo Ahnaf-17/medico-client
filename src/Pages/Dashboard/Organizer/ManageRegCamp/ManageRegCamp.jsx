@@ -1,8 +1,9 @@
+import SectionHeading from "../../../../components/SectionHeading/SectionHeading";
 
 const ManageRegCamp = () => {
     return (
         <div>
-            reg camp
+            <SectionHeading heading='registered camp'></SectionHeading>
         </div>
     );
 };

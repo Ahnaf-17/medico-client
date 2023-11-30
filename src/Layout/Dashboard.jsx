@@ -1,7 +1,7 @@
 import { AiOutlineMenuUnfold } from "react-icons/ai";
 import { NavLink, Outlet } from "react-router-dom";
 import { FaHome, FaListAlt, FaMobileAlt, FaRegEdit, FaUser } from "react-icons/fa";
-import { FaBook, FaCalendarPlus, FaCashRegister, FaPenNib, FaRegistered } from "react-icons/fa6";
+import { FaArrowRight, FaBook, FaCalendarPlus, FaCashRegister, FaPenNib, FaRegistered } from "react-icons/fa6";
 import useOrganizer from "../Hooks/useOrganizer";
 import useParticipant from "../Hooks/useParticipant";
 import useProfessional from "../Hooks/useProfessional";
@@ -39,6 +39,9 @@ const Dashboard = () => {
                                     </li>
                                     <li>
                                         <NavLink to='/dashboard/manage-registered-camps'><FaCashRegister></FaCashRegister> Registered camp</NavLink>
+                                    </li>
+                                    <li>
+                                        <NavLink to='/dashboard/add-upcoming-camp'><FaArrowRight></FaArrowRight> Add Upcoming camp</NavLink>
                                     </li>
                                 </>
                                 :

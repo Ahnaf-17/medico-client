@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import useCamp from "../../../Hooks/useCamp";
 import CampCard from "../../../components/CampCard/CampCard";
 import SectionHeading from "../../../components/SectionHeading/SectionHeading";
@@ -19,6 +20,11 @@ const PopularCamp = () => {
                     >
                     </CampCard>)
             }
+            </div>
+            <div className="items-center text-center my-16">
+            <Link to='/availableCamps'>
+            <button className="btn btn-outline bg-cyan-700 w-20 text-white">See All</button>
+            </Link>
             </div>
         </div>
     );

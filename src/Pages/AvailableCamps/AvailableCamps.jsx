@@ -19,30 +19,32 @@ const AvailableCamps = () => {
                 item.campName.toLowerCase().includes(searchTerm.toLowerCase())
             );
         }
-        if (sortType) {
-            filteredCamps = filteredCamps.filter((item) => {
-                switch (sortType) {
-                    case "participant1-4":
-                        return item.participantCount >= 1 && item.participantCount <= 4;
-                    case "participant5-9":
-                        return item.participantCount >= 5 && item.participantCount <= 9;
-                    case "participant10-14":
-                        return item.participantCount >= 10 && item.participantCount <= 14;
-                    default:
-                        return true;
-                }
-            });
-        }
+        // if (sortType) {
+        //     filteredCamps = filteredCamps.filter((item) => {
+        //         switch (sortType) {
+        //             case "participant1-4":
+        //                 return item.participantCount >= 1 && item.participantCount <= 4;
+        //             case "participant5-9":
+        //                 return item.participantCount >= 5 && item.participantCount <= 9;
+        //             case "participant10-14":
+        //                 return item.participantCount >= 10 && item.participantCount <= 14;
+        //             default:
+        //                 return true;
+        //         }
+        //     });
+        // }
 
         setFinalCamp(filteredCamps);
-    }, [camp, searchTerm,sortType]);
+    }, [camp, searchTerm]);
+
+    
     const handleSort = (e) => {
         setSortType(e.target.value);
     }
     const handleSearch = (e) => {
         setSearchTerm(e.target.value);
     }
-    console.log(camp, "from available camp");
+    // console.log(camp, "from available camp");
     return (
         <div >
             <Cover></Cover>

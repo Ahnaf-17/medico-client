@@ -24,6 +24,7 @@ import Feedback from "../Pages/Dashboard/Participant/Feedback/Feedback";
 import ProfessionalRoute from "./ProfessionalRoute";
 import ProfessionalsProfile from "../Pages/Dashboard/Professionals/Profile/ProfessionalsProfile";
 import Payment from "../Pages/Payment/Payment";
+import AddUpcomingCamp from "../Pages/Dashboard/Organizer/AddUpcomingCamp/AddUpcomingCamp";
 
 export const router = createBrowserRouter([
     {
@@ -106,6 +107,10 @@ export const router = createBrowserRouter([
         {
           path:'manage-registered-camps',
           element:<OrganizerRoute><ManageRegCamp></ManageRegCamp></OrganizerRoute>
+        },
+        {
+          path:'add-upcoming-camp',
+          element:<OrganizerRoute><AddUpcomingCamp></AddUpcomingCamp></OrganizerRoute>
         },
 
         // professional 

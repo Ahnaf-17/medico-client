@@ -1,0 +1,75 @@
+[
+    {
+      "campName": "Pediatric Health Awareness Camp",
+      "servicesProvided": "Pediatric care, health workshops",
+      "healthcareProfessionals": "Pediatricians, nurses",
+      "targetAudience": "Parents and children",
+      "location": "Community Health Center",
+      "longDescription": "An informative camp to educate parents about child health.",
+      "dateAndTime": "2024-07-15T09:00:00",
+      "campFees": 20,
+      "image": "pediatric_camp.jpghttps://i.ibb.co/xzqwPgX/images-q-tbn-ANd9-Gc-R-tki0-Zzz-M7-Tn-TQiwxv-os-Mmf-Oy7w-UCbc-ESn-FYGOt-GOI96-I22e-Yl6-Hjh-Ty-HZ1k-I.jpg",
+      "userEmail": "example1@example.com"
+    },
+    {
+      "campName": "Elderly Health Check-up Camp",
+      "servicesProvided": "Geriatric care, health screenings",
+      "healthcareProfessionals": "Geriatric specialists, caregivers",
+      "targetAudience": "Elderly individuals",
+      "location": "Senior Living Center",
+      "longDescription": "A camp providing comprehensive health check-ups for seniors.",
+      "dateAndTime": "2024-08-20T10:30:00",
+      "campFees": 15,
+      "image": "https://i.ibb.co/Km10MmL/caring-female-nurse-medical-facemask-260nw-1879847797.jpg",
+      "userEmail": "example2@example.com"
+    },
+    {
+      "campName": "Women's Health Symposium",
+      "servicesProvided": "Women's health talks, screenings",
+      "healthcareProfessionals": "Gynecologists, women's health experts",
+      "targetAudience": "Women of all ages",
+      "location": "Women's Health Center",
+      "longDescription": "Empowering women through health discussions and screenings.",
+      "dateAndTime": "2024-06-10T11:00:00",
+      "campFees": 25,
+      "image": "https://i.ibb.co/QfPxmFt/images-q-tbn-ANd9-Gc-TXpm-Wtm-L7n-OZ-Z529-Lhg-TLv-GEZZGSMy27mw-A-usqp-CAU.jpg",
+      "userEmail": "example3@example.com"
+    },
+    {
+      "campName": "Mental Health Awareness Camp",
+      "servicesProvided": "Mental health sessions, counseling",
+      "healthcareProfessionals": "Psychiatrists, counselors",
+      "targetAudience": "Individuals seeking mental health support",
+      "location": "Community Center",
+      "longDescription": "Promoting mental health awareness and providing counseling services.",
+      "dateAndTime": "2024-09-05T08:00:00",
+      "campFees": 30,
+      "image": "https://i.ibb.co/n7tY9tC/mental-health-awareness-week-observed-on-annual-calendar-of-every-may-month-awareness-vector-illustr.jpg",
+      "userEmail": "example4@example.com"
+    },
+    {
+      "campName": "Health & Fitness Camp",
+      "servicesProvided": "Fitness training, health seminars",
+      "healthcareProfessionals": "Fitness trainers, nutritionists",
+      "targetAudience": "Fitness enthusiasts",
+      "location": "Fitness Center",
+      "longDescription": "Combining health education with fitness activities for all ages.",
+      "dateAndTime": "2024-07-30T13:45:00",
+      "campFees": 20,
+      "image": "https://i.ibb.co/gr3Bw1h/Group-253.jpg",
+      "userEmail": "example5@example.com"
+    },
+    {
+      "campName": "Community First Aid Workshop",
+      "servicesProvided": "First aid training, emergency response",
+      "healthcareProfessionals": "Emergency responders, healthcare educators",
+      "targetAudience": "Community members",
+      "location": "Community Hall",
+      "longDescription": "Teaching essential first aid skills to help in emergencies.",
+      "dateAndTime": "2024-08-12T14:00:00",
+      "campFees": 10,
+      "image": "https://i.ibb.co/7YF0jMD/BLS-scaled.webp",
+      "userEmail": "example6@example.com"
+    }
+  ]
+  

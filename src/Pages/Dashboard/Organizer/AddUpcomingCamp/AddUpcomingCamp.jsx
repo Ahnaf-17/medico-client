@@ -1,12 +1,13 @@
-import { useForm } from "react-hook-form";
-import SectionHeading from "../../../../components/SectionHeading/SectionHeading";
-import useAxiosPublic from "../../../../Hooks/useAxiosPublic";
-import useAxiosPrivate from "../../../../Hooks/useAxiosPrivate";
 import Swal from "sweetalert2";
+import SectionHeading from "../../../../components/SectionHeading/SectionHeading";
+import { useForm } from "react-hook-form";
 import useAuth from "../../../../Hooks/useAuth";
+import useAxiosPrivate from "../../../../Hooks/useAxiosPrivate";
+import useAxiosPublic from "../../../../Hooks/useAxiosPublic";
 const image_hosting_key = import.meta.env.VITE_image_key;
 const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_key}`
-const AddCamp = () => {
+const AddUpcomingCamp = () => {
+
     const axiosPublic = useAxiosPublic()
     const axiosPrivate = useAxiosPrivate()
     const { register, handleSubmit,reset } = useForm()
@@ -37,7 +38,7 @@ const AddCamp = () => {
 
             }
             // 
-            const campRes = await axiosPrivate.post('/camps', campItem);
+            const campRes = await axiosPrivate.post('/upcoming', campItem);
             console.log(campRes.data)
             if(campRes.data.insertedId){
                 // show success popup
@@ -53,9 +54,12 @@ const AddCamp = () => {
         }
         console.log( 'with image url', res.data);
     };
+
+
+
     return (
         <div className="overflow-x-auto">
-            <SectionHeading heading='add a camp'></SectionHeading>
+            <SectionHeading heading='add upcoming camp'></SectionHeading>
             <div>
                 <form onSubmit={handleSubmit(onSubmit)}>
                     <div className="md:flex gap-2">
@@ -142,4 +146,4 @@ const AddCamp = () => {
     );
 };
 
-export default AddCamp;
+export default AddUpcomingCamp;

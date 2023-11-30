@@ -5,6 +5,9 @@ import { AuthContext } from "../../Provider/AuthProvider";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import { FaGoogle } from "react-icons/fa6";
+import useParticipant from "../../Hooks/useParticipant";
+import useOrganizer from "../../Hooks/useOrganizer";
+import useProfessional from "../../Hooks/useProfessional";
 const Login = () => {
 
 
@@ -12,6 +15,9 @@ const Login = () => {
     const location = useLocation();
     const navigate = useNavigate()
     const [logInErr, setLogInErr] = useState('')
+    const [isParticipant] = useParticipant()
+    const [isOrganizer] = useOrganizer()
+    const [isProfessional] = useProfessional()
 
 
     const handleLogin = e => {
@@ -23,8 +29,23 @@ const Login = () => {
         setLogInErr('')
         logIn(email, password)
             .then(result => {
-                console.log(result.user)
                 navigate(location?.state ? location.state : '/')
+                // if(isParticipant){
+                    
+                // }
+                // else if(isOrganizer){
+                //     navigate(location?.state ? location.state : '/dashboard/organizer-profile')
+                // }
+                // else if(isProfessional){
+                //     navigate(location?.state ? location.state : '/dashboard/professional-profile')
+                // }
+                // if (isParticipant == true) {
+                //     navigate(location?.state ? location.state : '/dashboard/participant-profile');
+                // } else if (isOrganizer == true) {
+                //     navigate(location?.state ? location.state : '/dashboard/organizer-profile');
+                // } else if (isProfessional == true) {
+                //     navigate(location?.state ? location.state : '/dashboard/professional-profile');
+                // }
             })
             .catch(error => {
                 console.error(error)
