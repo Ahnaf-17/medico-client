@@ -96,7 +96,7 @@ const RegCamps = () => {
         <td>{camp.campFees}</td>
         <td>pending</td>
         <td>
-            <Link to={`/dashboard/payment/${camp._id}`}>
+            <Link to={`/dashboard/payment/${camp._id}?campPrice=${camp.campFees}`}>
             <button className="btn btn-md bg-cyan-800 text-white">Pay</button>
             </Link>
         </td>
