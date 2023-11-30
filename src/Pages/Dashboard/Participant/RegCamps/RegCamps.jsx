@@ -5,12 +5,11 @@ import useAuth from "../../../../Hooks/useAuth";
 import useCamp from "../../../../Hooks/useCamp";
 import SectionHeading from "../../../../components/SectionHeading/SectionHeading";
 import { Link } from "react-router-dom";
-import Swal from "sweetalert2";
 const RegCamps = () => {
     const axiosPrivate = useAxiosPrivate();
     const [camp] = useCamp()
     const { user } = useAuth()
-    const { data: registeredCamps = [],refetch } = useQuery({
+    const { data: registeredCamps = [] } = useQuery({
         queryKey: ['registeredCamps'],
         queryFn: async () => {
             const res = await axiosPrivate.get('/reg-camps', {
@@ -28,37 +27,37 @@ const RegCamps = () => {
         registeredCamps.some(registeredCamp => registeredCamp.regCampId === campItem._id)
     );
 
-    const handleCancel =  (camp)=>{
-        Swal.fire({
-            title: "Are you sure?",
-            text: "You won't be able to revert this!",
-            icon: "warning",
-            showCancelButton: true,
-            confirmButtonColor: "#3085d6",
-            cancelButtonColor: "#d33",
-            confirmButtonText: "Yes, delete it!"
-        }).then(async (result) => {
-            if (result.isConfirmed) {
+    // const handleCancel =  (camp)=>{
+    //     Swal.fire({
+    //         title: "Are you sure?",
+    //         text: "You won't be able to revert this!",
+    //         icon: "warning",
+    //         showCancelButton: true,
+    //         confirmButtonColor: "#3085d6",
+    //         cancelButtonColor: "#d33",
+    //         confirmButtonText: "Yes, delete it!"
+    //     }).then(async (result) => {
+    //         if (result.isConfirmed) {
                 
-                const res = await axiosPrivate.delete(`/reg-camps/${camp.regCampId
-                }`);
-                console.log(res.data);
-                if (res.data.deletedCount > 0) {
-                    // refetch to update the ui
-                    refetch();
-                    Swal.fire({
-                        position: "top-end",
-                        icon: "success",
-                        title: `${camp.name} has been deleted`,
-                        showConfirmButton: false,
-                        timer: 1500
-                    });
-                }
+    //             const res = await axiosPrivate.delete(`/reg-camps/${camp.regCampId
+    //             }`);
+    //             console.log(res.data);
+    //             if (res.data.deletedCount > 0) {
+    //                 // refetch to update the ui
+    //                 refetch();
+    //                 Swal.fire({
+    //                     position: "top-end",
+    //                     icon: "success",
+    //                     title: `${camp.name} has been deleted`,
+    //                     showConfirmButton: false,
+    //                     timer: 1500
+    //                 });
+    //             }
 
 
-            }
-        });
-    }
+    //         }
+    //     });
+    // }
 
 
     // const columns = [
@@ -146,7 +145,7 @@ const RegCamps = () => {
         </td>
         <td>
         <button 
-        onClick={()=>handleCancel(camp)}
+        // onClick={()=>handleCancel(camp)}
         className="underline btn-error text-red-500">cancel</button>
 
         </td>

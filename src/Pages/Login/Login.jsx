@@ -15,9 +15,9 @@ const Login = () => {
     const location = useLocation();
     const navigate = useNavigate()
     const [logInErr, setLogInErr] = useState('')
-    const [isParticipant] = useParticipant()
-    const [isOrganizer] = useOrganizer()
-    const [isProfessional] = useProfessional()
+    // const [isParticipant] = useParticipant()
+    // const [isOrganizer] = useOrganizer()
+    // const [isProfessional] = useProfessional()
 
 
     const handleLogin = e => {
