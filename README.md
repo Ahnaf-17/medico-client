@@ -1,8 +1,17 @@
-# React + Vite
+# Project Name: Medico
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+# 
+The Medical Camp Management System is an user-friendly MERN
+application meticulously crafted to revolutionize the efficiency of organizing and 
+managing medical camps. This comprehensive system is tailored to meet the diverse 
+needs of three pivotal user roles: Organizers, Healthcare Professionals, 
+and Participants, ensuring seamless coordination and optimal functionality
 
-Currently, two official plugins are available:
+# Live Link:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+# Feature
+- role based user (organizer,participant,professionals)
+- participant can payment for a camp (stripe added)
+- organizer can publish a camp and update it
+- search camp by title
+- organizer can upload upcoming camps

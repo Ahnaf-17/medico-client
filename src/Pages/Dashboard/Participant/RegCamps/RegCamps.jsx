@@ -5,11 +5,12 @@ import useAuth from "../../../../Hooks/useAuth";
 import useCamp from "../../../../Hooks/useCamp";
 import SectionHeading from "../../../../components/SectionHeading/SectionHeading";
 import { Link } from "react-router-dom";
+import Swal from "sweetalert2";
 const RegCamps = () => {
     const axiosPrivate = useAxiosPrivate();
     const [camp] = useCamp()
     const { user } = useAuth()
-    const { data: registeredCamps = [] } = useQuery({
+    const { data: registeredCamps = [],refetch } = useQuery({
         queryKey: ['registeredCamps'],
         queryFn: async () => {
             const res = await axiosPrivate.get('/reg-camps', {
@@ -27,8 +28,38 @@ const RegCamps = () => {
         registeredCamps.some(registeredCamp => registeredCamp.regCampId === campItem._id)
     );
 
+    const handleCancel =  (camp)=>{
+        Swal.fire({
+            title: "Are you sure?",
+            text: "You won't be able to revert this!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, delete it!"
+        }).then(async (result) => {
+            if (result.isConfirmed) {
+                
+                const res = await axiosPrivate.delete(`/reg-camps/${camp.regCampId
+                }`);
+                console.log(res.data);
+                if (res.data.deletedCount > 0) {
+                    // refetch to update the ui
+                    refetch();
+                    Swal.fire({
+                        position: "top-end",
+                        icon: "success",
+                        title: `${camp.name} has been deleted`,
+                        showConfirmButton: false,
+                        timer: 1500
+                    });
+                }
 
-    console.log("matched", matchedCamps);
+
+            }
+        });
+    }
+
 
     // const columns = [
     //     {
@@ -67,7 +98,20 @@ const RegCamps = () => {
     //     //   sortable: true,
     //     },
 
-    //   ];
+    //   ]
+
+
+
+    // pay to paid unsuccessful 
+
+    // const { data: payments = [] } = useQuery({
+    //     queryKey: ['payments', user.email],
+    //     queryFn: async () => {
+    //         const res = await axiosPrivate.get(`/payments/${user.email}`)
+    //         return res.data
+    //     }
+    // })
+    // console.log(payments.transactionId);
 
 
 
@@ -96,9 +140,15 @@ const RegCamps = () => {
         <td>{camp.campFees}</td>
         <td>pending</td>
         <td>
-            <Link to={`/dashboard/payment/${camp._id}?campPrice=${camp.campFees}`}>
+        <Link to={`/dashboard/payment/${camp._id}?campPrice=${camp.campFees}`}>
             <button className="btn btn-md bg-cyan-800 text-white">Pay</button>
             </Link>
+        </td>
+        <td>
+        <button 
+        onClick={()=>handleCancel(camp)}
+        className="underline btn-error text-red-500">cancel</button>
+
         </td>
       </tr> )}
       
