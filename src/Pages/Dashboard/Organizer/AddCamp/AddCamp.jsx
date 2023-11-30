@@ -54,7 +54,7 @@ const AddCamp = () => {
         console.log( 'with image url', res.data);
     };
     return (
-        <div>
+        <div >
             <SectionHeading heading='add a camp'></SectionHeading>
             <div>
                 <form onSubmit={handleSubmit(onSubmit)}>

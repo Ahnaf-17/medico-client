@@ -128,8 +128,8 @@ const ManageCamp = () => {
                 <h2 className=" text-2xl">Total camps{camps.length}</h2>
             </div>
             <div>
-            <div className="overflow-x-auto">
-  <table className="table table-zebra w-full">
+            <div className="overflow-x-hidden">
+  <table className="table table-zebra">
     {/* head */}
     <thead>
       <tr>
