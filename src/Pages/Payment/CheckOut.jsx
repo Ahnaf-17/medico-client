@@ -67,6 +67,16 @@ useEffect(() => {
             setTrxid(paymentIntent.id)
         }
 
+        // send to database 
+        const payment = {
+            email: user.email,
+            price: campPrice,
+            transactionId: paymentIntent.id,
+            date: new Date(),
+            status: 'pending'
+        }
+        const res = await axiosPrivate.post('/payments',payment)
+        console.log(res,'saved');
 
 
 
